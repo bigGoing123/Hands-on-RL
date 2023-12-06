@@ -157,3 +157,6 @@ if __name__ == '__main__':
     plt.ylabel('Returns')
     plt.title('DQN on {}'.format(env_name))
     plt.show()
+    # 假设你的模型对象叫做 agent.q_net（Q 网络）
+    torch.save(agent.q_net.state_dict(), 'trained_model.pth')
+
