@@ -137,6 +137,7 @@ def train_DQN(agent, env, num_episodes, replay_buffer, minimal_size,
                         '%.3f' % np.mean(return_list[-10:])
                     })
                 pbar.update(1)
+                env.render()
     return return_list, max_q_value_list
 
 

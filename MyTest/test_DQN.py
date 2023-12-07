@@ -1,7 +1,7 @@
 import gym
 import torch
 from train_DQN import DQN  # 假设模型类在 train_DQN.py 中
-
+import numpy as np
 # 创建 Gym 环境
 env = gym.make('CartPole-v0')
 lr = 1e-3
@@ -13,7 +13,7 @@ target_update = 1000
 buffer_size = 3000
 minimal_size = 1000
 batch_size = 64
-env.seed(42)
+# env.seed(42)
 torch.manual_seed(0)
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device(
     "cpu")
@@ -30,6 +30,7 @@ state = env.reset()
 done = False
 for _ in range(10):
     sum_r=0
+    env.seed(np.random.randint(1,100))#设置环境随机数
     while not done:
         action = agent.take_action(state)
         next_state, reward, done, _ = env.step(action)
